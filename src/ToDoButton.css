@@ -1,0 +1,29 @@
+.button-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    border-radius: 12px;
+    border: 1.5px solid #ffffffd9;
+    font-size: 1rem;
+    font-weight: bolder;
+    background-color: #515151;
+    width: 90px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  
+.button:hover {
+    border-color: #646cff;
+  }
+
+.button:focus,
+.button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }

@@ -1,0 +1,9 @@
+.inputs{
+    height: 30px;
+    border-radius: 8px;
+    background-color: #cfcfcf;
+    border: 1px solid white;
+    padding: 0 8px 0 8px;
+    color: black;
+    box-shadow: inset #7b7b7b 0px 0px 5px;
+}  

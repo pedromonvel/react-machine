@@ -1,33 +1,68 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { ToDoCounter } from './ToDoCounter'
+import { ToDoSearch } from './ToDoSearch'
+import { ToDoList } from './ToDoList'
+import { ToDoItem } from './ToDoItem'
+import { CreateToDoButton } from './ToDoButton'
+import { ToDoTitles } from './ToDoTitles'
+import { ImageByCategory } from './SearchImage'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const defaultTodos = [
+    {text: "Amar a Catalina", completed: true},
+    {text: "Llorar con la llorona", completed: false},
+    {text: "Vivir la vida feliz", completed: true},
+    {text: "Tener mi primer empleo", completed: false}
+  ]
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <section className='search-section'>
+        <div className='search-box-section'>
+          <ToDoTitles 
+            pageTitles={'Create New Task'}
+            style={{ marginBottom: '16px' }}
+          />
+
+          <ToDoSearch 
+            placeHolder={'Add a new task...'}
+            style={{marginBottom: '16px', width: '80%'}}
+          />
+
+          <CreateToDoButton 
+            textButton={"Agregar"}
+          />
+        </div>
+
+        <ImageByCategory 
+          imageCollage={"books-collage"}
+          altImg={"Anime Background"}
+        />
+      </section>
+
+      <section className='todo-section'>
+        <ToDoCounter 
+          completed={16}
+          total={25} 
+        />
+
+        <ToDoSearch 
+          placeHolder={'Find your task...'}
+          style={{width: '60%'}}
+        />
+
+        <ToDoList>
+          {defaultTodos.map(todo => (
+            <ToDoItem 
+              key={todo.text}
+              text={todo.text}
+              completed={todo.completed}
+            />
+          ))}
+        </ToDoList>
+      </section>
     </>
   )
 }

@@ -1,0 +1,14 @@
+li {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #80808085;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    box-shadow: #000000b3 5px 5px 16px 0px;
+}
+
+p {
+    margin: 10px 0px;
+}
