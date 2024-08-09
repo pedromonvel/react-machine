@@ -7,6 +7,7 @@ import { ToDoItem } from './ToDoItem'
 import { CreateToDoButton } from './ToDoButton'
 import { ToDoTitles } from './ToDoTitles'
 import { ImageByCategory } from './SearchImage'
+import { HideTodoCompleted } from './ToDoHide'
 
 function App() {
 
@@ -17,12 +18,18 @@ function App() {
     {text: "Tener mi primer empleo", completed: false}
   ]
 
+  const searchIcon = (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#6b6b6b">
+        <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+    </svg>
+  );
+
   return (
     <>
       <section className='search-section'>
         <div className='search-box-section'>
           <ToDoTitles 
-            pageTitles={'Create New Task'}
+            pageTitles={'Create New Pendig Book'}
             style={{ marginBottom: '16px' }}
           />
 
@@ -43,14 +50,21 @@ function App() {
       </section>
 
       <section className='todo-section'>
+        <ToDoTitles 
+              pageTitles={"Your ToDo's"}
+              style={{ margin: '16px 0px 0px 0px', fontSize: '33px' }}
+            />
+
         <ToDoCounter 
           completed={16}
           total={25} 
+          todoType={"books"}
         />
 
         <ToDoSearch 
           placeHolder={'Find your task...'}
           style={{width: '60%'}}
+          icon={searchIcon}
         />
 
         <ToDoList>
@@ -62,6 +76,8 @@ function App() {
             />
           ))}
         </ToDoList>
+
+        <HideTodoCompleted/>
       </section>
     </>
   )

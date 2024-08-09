@@ -1,0 +1,28 @@
+.hide-section {
+    display: flex;
+    justify-content: center;
+}
+
+.hide-eye {
+    width: 20px;
+    cursor: pointer;
+    color: #989898;
+}
+
+.hide-text {
+    font-size: 14px;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #989898;
+}
+
+.hover-section {
+    display: flex;
+    transition: transform 0.25s;
+}
+
+.hover-section:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
+}
+

@@ -1,14 +1,38 @@
 li {
     width: 80%;
+    height: 50px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
     background-color: #80808085;
     margin-bottom: 14px;
     border-radius: 10px;
     box-shadow: #000000b3 5px 5px 16px 0px;
 }
 
-p {
+.todoItemContainer {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox-section input {
+    margin: 0 0 0 10px;
+    transform: scale(2.0);
+    cursor: pointer;
+    accent-color: #ffffff;
+}
+
+.todo-text {
     margin: 10px 0px;
+}
+
+.close-icon {
+    width: 30px;
+    cursor: pointer;
+    transition: transform 0.25s;
+}
+
+svg:hover {
+    transform: scale(1.05);
 }
