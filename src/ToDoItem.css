@@ -16,23 +16,37 @@ li {
     align-items: center;
 }
 
-.checkbox-section input {
+.checkbox-section {
     margin: 0 0 0 10px;
+    transition: transform 0.25s;
     transform: scale(2.0);
     cursor: pointer;
     accent-color: #ffffff;
 }
 
+.checkbox-section:hover {
+    transform: scale(2.1);
+    fill: rgb(103, 171, 103);
+}
+
+
 .todo-text {
     margin: 10px 0px;
 }
 
-.close-icon {
+.todo-text-check--active {
+    text-decoration: line-through;
+    color: rgb(169, 169, 169);
+}
+
+.Icon-delete {
     width: 30px;
     cursor: pointer;
     transition: transform 0.25s;
+    transform: scale(1.5);
 }
 
-svg:hover {
-    transform: scale(1.05);
+.Icon-delete:hover {
+    transform: scale(1.6);
+    color: rgb(252, 157, 157);
 }

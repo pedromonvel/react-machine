@@ -19,21 +19,47 @@ function App() {
   );
 
   const defaultTodos = [
-    {text: "Amar a Catalina", completed: true},
-    {text: "Llorar con la llorona", completed: false},
-    {text: "Vivir la vida feliz", completed: true},
-    {text: "Tener mi primer empleo", completed: false},
-    {text: "Ganar mas de 4 millones", completed: true}
+    {text: "El hombre en busca de sentido", completed: true},
+    {text: "El alma del exito", completed: false},
+    {text: "El hombre mas rico que jamas existio", completed: true},
+    {text: "Encuentra tu persona vitamina", completed: false},
+    {text: "Detalles que enamoran", completed: true}
   ]
 
   const [todos, setTodos] = React.useState(defaultTodos);
 
   const [searchValue, setSearchValue] = React.useState(''); 
 
-  console.log('Los usuarios buscando todos de ' + searchValue)
-
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const withoutAccent = (text) => {
+      return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    } //Esto lo hice para que al buscar con tildes tambien aparezcan
+    const todoText = withoutAccent(todo.text.toLocaleLowerCase());
+    const searchText = withoutAccent(searchValue.toLocaleLowerCase());
+    return todoText.includes(searchText);
+  });
+
+  const todoComplete = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    setTodos(newTodos);
+  };
+  
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos);
+  };
+  
 
   return (
     <>
@@ -47,8 +73,6 @@ function App() {
           <ToDoSearch 
             placeHolder={'Add a new task...'}
             style={{marginBottom: '16px', width: '80%'}}
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
           />
 
           <CreateToDoButton 
@@ -78,14 +102,18 @@ function App() {
           placeHolder={'Find your task...'}
           style={{width: '60%'}}
           icon={searchIcon}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
         />
 
         <ToDoList>
-          {defaultTodos.map(todo => (
+          {searchedTodos.map(todo => (
             <ToDoItem 
               key={todo.text}
               text={todo.text}
               completed={todo.completed}
+              onComplete={() => todoComplete(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
             />
           ))}
         </ToDoList>
